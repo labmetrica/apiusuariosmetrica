@@ -1,5 +1,7 @@
 package com.metrica.formacion.apiusuariosmetrica.entity;
 
+import com.metrica.formacion.apiusuariosmetrica.Converter.LocalDateConvert;
+import com.thoughtworks.xstream.converters.time.LocalDateConverter;
 import lombok.extern.log4j.Log4j2;
 
 import javax.persistence.*;
@@ -36,6 +38,7 @@ public class usuarios {
     @Column(name = "ultima_modificacion")
     private LocalDateTime ultima_modificacion;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "tipo")
     private tipos tipo = tipos.Empleado;
 

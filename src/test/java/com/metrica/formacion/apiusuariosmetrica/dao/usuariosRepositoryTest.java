@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -30,11 +31,25 @@ public class usuariosRepositoryTest {
     @Test
     public void testBuscarPorFecha(){
 
-        LocalDate fecha = LocalDate.of(2019,10,26);
+        LocalDateTime fecha = LocalDateTime.of(2019,10,26,00,00,00);
+        LocalDateTime fecha1 = LocalDateTime.of(2019,10,27,00,00,00);
 
-        List<usuarios> lista = usuariosRepository.findByCreatedAT(fecha);
+        List<usuarios> lista = usuariosRepository.findByCreatedAT(fecha.toString());
 
         Assertions.assertEquals(2,lista.size());
 
+    }
+
+    @Test
+    public void testInsertCliente(){
+
+        usuarios usuarios = new usuarios();
+        usuarios.setNombre("aaaa");
+        usuarios.setApellido("lalalal");
+        usuarios.setCreatedAT(LocalDateTime.now());
+        usuarios.setUltima_modificacion(LocalDateTime.now());
+        usuarios.setTipo(com.metrica.formacion.apiusuariosmetrica.entity.usuarios.tipos.Empleado);
+
+        Assertions.assertEquals(usuarios, usuariosRepository.save(usuarios));
     }
 }
