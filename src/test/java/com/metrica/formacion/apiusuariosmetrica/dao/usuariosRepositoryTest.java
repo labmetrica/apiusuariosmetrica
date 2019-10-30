@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,9 +21,20 @@ public class usuariosRepositoryTest {
     @Autowired
     private usuariosRepository usuariosRepository;
 
-    @Test()
+    @Test
     public void testRepo(){
 
         Assertions.assertEquals(Optional.empty(),usuariosRepository.findById(000));
+    }
+
+    @Test
+    public void testBuscarPorFecha(){
+
+        LocalDate fecha = LocalDate.of(2019,10,26);
+
+        List<usuarios> lista = usuariosRepository.findByCreatedAT(fecha);
+
+        Assertions.assertEquals(2,lista.size());
+
     }
 }

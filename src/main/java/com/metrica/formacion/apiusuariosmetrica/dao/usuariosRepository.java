@@ -2,7 +2,9 @@ package com.metrica.formacion.apiusuariosmetrica.dao;
 
 import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -22,9 +24,9 @@ public interface usuariosRepository extends JpaRepository<usuarios, Integer> {
 
     List<usuarios> findByCreatedATBetween (LocalDateTime fecha1, LocalDateTime fecha2);
 
-    @Query(value = "SELECT * FROM usuarios u WHERE DATEDIF",
-    nativeQuery = true);
-    List<usuarios> findByCreatedAT(LocalDate localDate);
+    @Modifying
+    @Query(value = "select * from usuarios where DATEDIFF(usuarios.createdAT, ?) = 0", nativeQuery = true)
+    List<usuarios> findByCreatedAT(LocalDate fecha);
 
     usuarios findByEmailContainingIgnoreCase (String email);
 }
