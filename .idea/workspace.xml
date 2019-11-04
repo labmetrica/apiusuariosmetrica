@@ -4,6 +4,23 @@
     <list default="true" id="ada9e657-8a5c-47b6-bf8d-6f6c52d07fed" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_12_1.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/metrica/formacion/apiusuariosmetrica/Service/usuariosServiceImpleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigruposmetrica/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigruposmetrica/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigruposmetrica/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigruposmetrica/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigruposmetrica/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigruposmetrica/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigruposmetrica/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigruposmetrica/src/main/java/com/metrica/formacion/apigruposmetrica/ApigruposmetricaApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigruposmetrica/src/main/java/com/metrica/formacion/apigruposmetrica/Config/SpringConfigurationFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigruposmetrica/src/main/java/com/metrica/formacion/apigruposmetrica/Controller/gruposController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigruposmetrica/src/main/java/com/metrica/formacion/apigruposmetrica/Service/gruposService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigruposmetrica/src/main/java/com/metrica/formacion/apigruposmetrica/Service/gruposServiceImple.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigruposmetrica/src/main/java/com/metrica/formacion/apigruposmetrica/dao/grupoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigruposmetrica/src/main/java/com/metrica/formacion/apigruposmetrica/entity/grupos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigruposmetrica/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../apigruposmetrica/src/test/java/com/metrica/formacion/apigruposmetrica/ApigruposmetricaApplicationTests.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -17,6 +34,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/metrica/formacion/apiusuariosmetrica/dao/usuariosRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/metrica/formacion/apiusuariosmetrica/dao/usuariosRepositoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/metrica/formacion/apiusuariosmetrica/Controller/usuariosController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/metrica/formacion/apiusuariosmetrica/Controller/usuariosController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/metrica/formacion/apiusuariosmetrica/Service/usuariosService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/metrica/formacion/apiusuariosmetrica/Service/usuariosService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/metrica/formacion/apiusuariosmetrica/Service/usuariosServiceImple.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/metrica/formacion/apiusuariosmetrica/Service/usuariosServiceImple.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/metrica/formacion/apiusuariosmetrica/dao/usuariosRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/metrica/formacion/apiusuariosmetrica/dao/usuariosRepository.class" afterDir="false" />
@@ -52,14 +70,25 @@
     <splitter split-orientation="horizontal" split-proportion="0.46695095">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/Controller/usuariosController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="720">
-                  <caret line="48" selection-start-line="48" selection-end-line="48" />
+                <state relative-caret-position="995">
+                  <caret line="78" column="37" selection-start-line="78" selection-start-column="37" selection-end-line="78" selection-end-column="37" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <element signature="e#844#845#0" expanded="true" />
+                    <element signature="e#898#899#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/5.2.0.RELEASE/spring-beans-5.2.0.RELEASE.jar!/org/springframework/beans/factory/annotation/AutowiredAnnotationBeanPostProcessor.class">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="163">
+                  <caret line="576" selection-start-line="576" selection-end-line="576" />
                 </state>
               </provider>
             </entry>
@@ -79,8 +108,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/entity/usuarios.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="570">
-                  <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+                <state relative-caret-position="517">
+                  <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -88,11 +117,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/dao/usuariosRepository.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
-                  <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+                <state relative-caret-position="255">
+                  <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -103,8 +132,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/Service/usuariosService.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="225">
-                  <caret line="15" column="47" lean-forward="true" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+                <state relative-caret-position="600">
+                  <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -115,8 +144,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/test/java/com/metrica/formacion/apiusuariosmetrica/dao/usuariosRepositoryTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
-                  <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+                <state relative-caret-position="225">
+                  <caret line="15" selection-start-line="15" selection-end-line="16" selection-end-column="14" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -150,7 +179,7 @@
             <entry file="file://$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/Service/usuariosService.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="690">
-                  <caret line="46" column="46" lean-forward="true" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="46" />
+                  <caret line="50" column="46" lean-forward="true" selection-start-line="50" selection-start-column="46" selection-end-line="50" selection-end-column="46" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -161,12 +190,16 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/Service/usuariosServiceImple.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1680">
-                  <caret line="120" column="5" selection-start-line="120" selection-start-column="5" selection-end-line="120" selection-end-column="5" />
+                <state relative-caret-position="525">
+                  <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#1179#1180#0" expanded="true" />
-                    <element signature="e#1206#1207#0" expanded="true" />
+                    <element signature="e#735#736#0" expanded="true" />
+                    <element signature="e#763#764#0" expanded="true" />
+                    <element signature="e#855#856#0" expanded="true" />
+                    <element signature="e#925#926#0" expanded="true" />
+                    <element signature="e#1448#1449#0" expanded="true" />
+                    <element signature="e#1504#1505#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -179,9 +212,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -199,11 +232,12 @@
         <option value="$PROJECT_DIR$/src/main/resources/log4j2.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/entity/usuarios.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/Converter/LocalDateConvert.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/metrica/formacion/apiusuariosmetrica/dao/usuariosRepositoryTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/dao/usuariosRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/Service/usuariosService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/entity/usuarios.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/metrica/formacion/apiusuariosmetrica/Service/usuariosServiceImpleTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/dao/usuariosRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/Service/usuariosServiceImple.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/Controller/usuariosController.java" />
       </list>
@@ -243,9 +277,9 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="356" />
-    <option name="y" value="79" />
+    <option name="y" value="1" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -313,6 +347,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="apiusuariosmetrica" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="apiusuariosmetrica" type="b2602c69:ProjectViewProjectNode" />
+              <item name="apiusuariosmetrica" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="apiusuariosmetrica" type="462c0819:PsiDirectoryNode" />
               <item name="Service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -368,10 +411,10 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572615035460" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572866277077" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../apigruposmetrica" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -383,6 +426,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.metrica.formacion.apiusuariosmetrica.Service" />
       <recent name="com.metrica.formacion.apiusuariosmetrica.dao" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -407,7 +451,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ApiMetricaUsuariosApplication">
+  <component name="RunManager" selected="JUnit.usuariosServiceImpleTest.buscarPorIdEntity">
     <configuration name="usuariosRepositoryTest.testBuscarPorFecha" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="apiusuariosmetrica" />
       <extension name="coverage">
@@ -456,33 +500,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="usuariosRepositoryTest.testRepo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="usuariosServiceImpleTest.buscarPorId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="apiusuariosmetrica" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.metrica.formacion.apiusuariosmetrica.dao.*" />
+          <option name="PATTERN" value="com.metrica.formacion.apiusuariosmetrica.Service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.metrica.formacion.apiusuariosmetrica.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.metrica.formacion.apiusuariosmetrica.dao.usuariosRepositoryTest" />
-      <option name="METHOD_NAME" value="testRepo" />
+      <option name="PACKAGE_NAME" value="com.metrica.formacion.apiusuariosmetrica.Service" />
+      <option name="MAIN_CLASS_NAME" value="com.metrica.formacion.apiusuariosmetrica.Service.usuariosServiceImpleTest" />
+      <option name="METHOD_NAME" value="buscarPorId" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="usuariosRepositoryTest.testuscarFecha" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="usuariosServiceImpleTest.buscarPorIdEntity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="apiusuariosmetrica" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.metrica.formacion.apiusuariosmetrica.dao.*" />
+          <option name="PATTERN" value="com.metrica.formacion.apiusuariosmetrica.Service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.metrica.formacion.apiusuariosmetrica.dao" />
-      <option name="MAIN_CLASS_NAME" value="com.metrica.formacion.apiusuariosmetrica.dao.usuariosRepositoryTest" />
-      <option name="METHOD_NAME" value="testuscarFecha" />
+      <option name="PACKAGE_NAME" value="com.metrica.formacion.apiusuariosmetrica.Service" />
+      <option name="MAIN_CLASS_NAME" value="com.metrica.formacion.apiusuariosmetrica.Service.usuariosServiceImpleTest" />
+      <option name="METHOD_NAME" value="buscarPorIdEntity" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -499,20 +543,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.usuariosRepositoryTest.testuscarFecha" />
-      <item itemvalue="JUnit.usuariosRepositoryTest.testRepo" />
       <item itemvalue="JUnit.usuariosRepositoryTest.testBuscarPorFecha" />
       <item itemvalue="JUnit.usuariosRepositoryTest.testInsertCliente" />
       <item itemvalue="JUnit.usuariosRepositoryTest.testBuscarPorFechaBefore" />
       <item itemvalue="Spring Boot.ApiMetricaUsuariosApplication" />
+      <item itemvalue="JUnit.usuariosServiceImpleTest.buscarPorId" />
+      <item itemvalue="JUnit.usuariosServiceImpleTest.buscarPorIdEntity" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.usuariosServiceImpleTest.buscarPorIdEntity" />
+        <item itemvalue="JUnit.usuariosServiceImpleTest.buscarPorId" />
         <item itemvalue="JUnit.usuariosRepositoryTest.testBuscarPorFechaBefore" />
         <item itemvalue="JUnit.usuariosRepositoryTest.testBuscarPorFecha" />
         <item itemvalue="JUnit.usuariosRepositoryTest.testInsertCliente" />
-        <item itemvalue="JUnit.usuariosRepositoryTest.testRepo" />
-        <item itemvalue="JUnit.usuariosRepositoryTest.testuscarFecha" />
       </list>
     </recent_temporary>
   </component>
@@ -539,26 +583,11 @@
       <workItem from="1572723509799" duration="1424000" />
       <workItem from="1572853764524" duration="806000" />
       <workItem from="1572855335508" duration="30000" />
-      <workItem from="1572855378154" duration="1425000" />
+      <workItem from="1572855378154" duration="7581000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="usuariosRepositoryTest_testBuscarPorFecha - 2019.10.30 at 14h 50m 00s.xml">
-      <configuration name="usuariosRepositoryTest.testBuscarPorFecha" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="usuariosRepositoryTest_testBuscarPorFecha - 2019.10.30 at 14h 51m 16s.xml">
-      <configuration name="usuariosRepositoryTest.testBuscarPorFecha" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="usuariosRepositoryTest_testBuscarPorFecha - 2019.10.30 at 14h 52m 53s.xml">
-      <configuration name="usuariosRepositoryTest.testBuscarPorFecha" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="usuariosRepositoryTest_testBuscarPorFecha - 2019.10.30 at 16h 17m 33s.xml">
-      <configuration name="usuariosRepositoryTest.testBuscarPorFecha" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="usuariosRepositoryTest_testBuscarPorFecha - 2019.10.30 at 17h 04m 37s.xml">
-      <configuration name="usuariosRepositoryTest.testBuscarPorFecha" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="usuariosRepositoryTest_testBuscarPorFecha - 2019.10.30 at 17h 06m 25s.xml">
       <configuration name="usuariosRepositoryTest.testBuscarPorFecha" configurationId="JUnit" />
     </history-entry>
@@ -574,12 +603,27 @@
     <history-entry file="usuariosRepositoryTest_testBuscarPorFechaBefore - 2019.10.31 at 21h 19m 42s.xml">
       <configuration name="usuariosRepositoryTest.testBuscarPorFechaBefore" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="usuariosServiceImpleTest_buscarPorId - 2019.11.04 at 10h 42m 54s.xml">
+      <configuration name="usuariosServiceImpleTest.buscarPorId" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="usuariosServiceImpleTest_buscarPorId - 2019.11.04 at 10h 45m 45s.xml">
+      <configuration name="usuariosServiceImpleTest.buscarPorId" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="usuariosServiceImpleTest_buscarPorIdEntity - 2019.11.04 at 10h 48m 15s.xml">
+      <configuration name="usuariosServiceImpleTest.buscarPorIdEntity" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="usuariosServiceImpleTest_buscarPorIdEntity - 2019.11.04 at 10h 49m 20s.xml">
+      <configuration name="usuariosServiceImpleTest.buscarPorIdEntity" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="usuariosServiceImpleTest_buscarPorIdEntity - 2019.11.04 at 10h 49m 58s.xml">
+      <configuration name="usuariosServiceImpleTest.buscarPorIdEntity" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55594000" />
+    <option name="totallyTimeSpent" value="61750000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.27452025" />
@@ -592,8 +636,8 @@
       <window_info id="Learn" order="7" />
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3740458" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3293348" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3740458" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -717,30 +761,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/entity/usuarios.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/Service/usuariosServiceDTO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/metrica/formacion/apiusuariosmetrica/dao/usuariosRepositoryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -751,44 +775,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/Service/usuariosServiceImple.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/Service/usuariosService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1680">
-          <caret line="120" column="5" selection-start-line="120" selection-start-column="5" selection-end-line="120" selection-end-column="5" />
+        <state relative-caret-position="600">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1179#1180#0" expanded="true" />
-            <element signature="e#1206#1207#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/Service/usuariosService.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/metrica/formacion/apiusuariosmetrica/dao/usuariosRepositoryTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="15" column="47" lean-forward="true" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+          <caret line="15" selection-start-line="15" selection-end-line="16" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/5.2.0.RELEASE/spring-beans-5.2.0.RELEASE.jar!/org/springframework/beans/factory/annotation/AutowiredAnnotationBeanPostProcessor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="576" selection-start-line="576" selection-end-line="576" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/entity/usuarios.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="517">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/metrica/formacion/apiusuariosmetrica/Service/usuariosServiceImpleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="30" column="76" lean-forward="true" selection-start-line="30" selection-start-column="76" selection-end-line="30" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/dao/usuariosRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/Service/usuariosServiceImple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#735#736#0" expanded="true" />
+            <element signature="e#763#764#0" expanded="true" />
+            <element signature="e#855#856#0" expanded="true" />
+            <element signature="e#925#926#0" expanded="true" />
+            <element signature="e#1448#1449#0" expanded="true" />
+            <element signature="e#1504#1505#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/Controller/usuariosController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        <state relative-caret-position="995">
+          <caret line="78" column="37" selection-start-line="78" selection-start-column="37" selection-end-line="78" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/metrica/formacion/apiusuariosmetrica/dao/usuariosRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#844#845#0" expanded="true" />
+            <element signature="e#898#899#0" expanded="true" />
           </folding>
         </state>
       </provider>

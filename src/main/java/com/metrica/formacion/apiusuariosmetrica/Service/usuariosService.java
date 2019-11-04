@@ -9,6 +9,10 @@ public interface usuariosService {
 
     List<usuarios> listarUsuarios();
 
+    boolean isExiste(usuarios usuarios);
+
+    boolean isExiste(int id);
+
     usuarios buscarPorId(Integer id);
 
     usuarios buscarPorIdEntity(Integer id);

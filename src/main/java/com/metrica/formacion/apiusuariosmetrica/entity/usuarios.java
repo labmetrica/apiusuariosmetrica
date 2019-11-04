@@ -1,7 +1,5 @@
 package com.metrica.formacion.apiusuariosmetrica.entity;
 
-import com.metrica.formacion.apiusuariosmetrica.Converter.LocalDateConvert;
-import com.thoughtworks.xstream.converters.time.LocalDateConverter;
 import lombok.extern.log4j.Log4j2;
 
 import javax.persistence.*;
@@ -35,8 +33,8 @@ public class usuarios {
     @Column(name = "activo")
     private boolean activo;
 
-    @Column(name = "ultima_modificacion")
-    private LocalDateTime ultima_modificacion;
+    @Column(name = "ultimaModificacion")
+    private LocalDateTime ultimaModificacion;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo")
@@ -108,17 +106,17 @@ public class usuarios {
         this.activo = activo;
     }
 
-    public LocalDateTime getUltima_modificacion() {
-        return ultima_modificacion;
+    public LocalDateTime getUltimaModificacion() {
+        return ultimaModificacion;
     }
 
-    public void setUltima_modificacion(LocalDateTime ultima_modificacion) {
-        this.ultima_modificacion = ultima_modificacion;
+    public void setUltimaModificacion(LocalDateTime ultimaModificacion) {
+        this.ultimaModificacion = ultimaModificacion;
     }
 
     public void setUltima_modificacion() {
 
-        this.ultima_modificacion = LocalDateTime.now();
+        this.ultimaModificacion = LocalDateTime.now();
     }
 
     public tipos getTipo() {

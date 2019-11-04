@@ -23,6 +23,18 @@ public class usuariosServiceImple implements usuariosService {
     }
 
     @Override
+    public boolean isExiste(int id) {
+        return usuariosRepository.existsById(id);
+    }
+
+    @Override
+    public boolean isExiste(usuarios usuarios) {
+        return usuariosRepository.existsById(usuarios.getId());
+    }
+
+    /*ID*/
+
+    @Override
     public usuarios buscarPorId(Integer id) {
         log.info("buscar usuario con id: " + id);
 
@@ -40,6 +52,8 @@ public class usuariosServiceImple implements usuariosService {
         log.info("Buscando usuario con id" + id);
         return usuariosRepository.getOne(id);
     }
+
+    //save
 
     @Override
     public usuarios guardarUsuario(usuarios usuarios) {
@@ -98,8 +112,9 @@ public class usuariosServiceImple implements usuariosService {
     }
 
     @Override
-    public List<usuarios> buscarPorCreatedAT(LocalDateTime fecha1, LocalDateTime fecha2) {
-        return usuariosRepository.findByCreatedATBetween(fecha1, fecha2);
+    public List<usuarios> buscarPorCreatedAT(LocalDate fecha1, LocalDate fecha2) {
+        return usuariosRepository.findByCreatedATBetween(fecha1.atTime(23,59,59),
+                fecha2.atTime(23,59,59));
     }
 
     @Override
@@ -111,12 +126,12 @@ public class usuariosServiceImple implements usuariosService {
 
     @Override
     public List<usuarios> buscarPorUlimaModificacion(LocalDate fecha) {
-        return usuariosRepository.findByUltima_modificacion(fecha.toString());
+        return usuariosRepository.findByUltimaModificacion(fecha.toString());
     }
 
     @Override
     public List<usuarios> buscarPorUlimaModificacion(LocalDate fecha1, LocalDate fecha2) {
-        return usuariosRepository.findByCreatedATBetween(fecha1.atTime(23,59,59),
+        return usuariosRepository.findByUltimaModificacionBetween(fecha1.atTime(23,59,59),
                 fecha2.atTime(23,59,59));
     }
 }

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -54,7 +53,7 @@ public class usuariosRepositoryTest {
         usuarios.setNombre("aaaa");
         usuarios.setApellido("lalalal");
         usuarios.setCreatedAT(LocalDateTime.now());
-        usuarios.setUltima_modificacion(LocalDateTime.now());
+        usuarios.setUltimaModificacion(LocalDateTime.now());
         usuarios.setTipo(com.metrica.formacion.apiusuariosmetrica.entity.usuarios.tipos.Empleado);
 
         Assertions.assertEquals(usuarios, usuariosRepository.save(usuarios));

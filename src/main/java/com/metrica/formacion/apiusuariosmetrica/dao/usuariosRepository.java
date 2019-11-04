@@ -11,8 +11,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
-public interface usuariosRepository extends JpaRepository<usuarios, Integer>,
-        JpaSpecificationExecutor<usuarios> {
+public interface usuariosRepository extends JpaRepository<usuarios, Integer>{
+
+    //Borrar
+
+    void deleteByEmailContainingIgnoreCase (String email);
+
+    //Busqueda por nombre y apellido
 
     List<usuarios> findByNombreContainingIgnoreCase(String nombre);
 
@@ -24,6 +29,10 @@ public interface usuariosRepository extends JpaRepository<usuarios, Integer>,
 
     usuarios findByEmailContainingIgnoreCase (String email);
 
+    /*Buscar por fechas*/
+
+    //CreatedAT
+
     List<usuarios> findByCreatedATBetween (LocalDateTime fecha1, LocalDateTime fecha2);
 
     @Query(value = "SELECT * FROM usuarios WHERE DATE(usuarios.createdAT) = ?1", nativeQuery = true)
@@ -31,10 +40,12 @@ public interface usuariosRepository extends JpaRepository<usuarios, Integer>,
 
     List<usuarios> findByCreatedATBefore(LocalDateTime localDateTime);
 
-    @Query(value = "SELECT * FROM usuarios WHERE DATE(usuarios.ultima_modificacion) = ?1", nativeQuery = true)
-    List<usuarios> findByUltima_modificacion(String fecha);
+    //Ultima modificacion
 
-    List<usuarios> findByUltima_modificacionBefore(LocalDateTime localDateTime);
+    @Query(value = "SELECT * FROM usuarios WHERE DATE(usuarios.ultimaModificacion) = ?1", nativeQuery = true)
+    List<usuarios> findByUltimaModificacion(String fecha);
 
-    List<usuarios> findByUltima_modificacionBetween(LocalDateTime fecha1, LocalDateTime fecha2);
+    List<usuarios> findByUltimaModificacionBefore(LocalDateTime localDateTime);
+
+    List<usuarios> findByUltimaModificacionBetween(LocalDateTime fecha1, LocalDateTime fecha2);
 }
