@@ -31,13 +31,20 @@ public class usuariosRepositoryTest {
     @Test
     public void testBuscarPorFecha(){
 
-        LocalDateTime fecha = LocalDateTime.of(2019,10,26,00,00,00);
-        LocalDateTime fecha1 = LocalDateTime.of(2019,10,27,00,00,00);
+        LocalDate fecha = LocalDate.of(2019,10,26);
 
         List<usuarios> lista = usuariosRepository.findByCreatedAT(fecha.toString());
 
         Assertions.assertEquals(2,lista.size());
 
+    }
+
+    @Test
+    public void testBuscarPorFechaBefore(){
+
+        List<usuarios> list = usuariosRepository.findByCreatedATBefore(LocalDateTime.of(2019,10,1, 00,00,00));
+
+        Assertions.assertEquals(3,list.size());
     }
 
     @Test
