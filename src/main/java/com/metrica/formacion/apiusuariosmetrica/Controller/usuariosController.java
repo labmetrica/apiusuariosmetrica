@@ -2,13 +2,16 @@ package com.metrica.formacion.apiusuariosmetrica.Controller;
 
 import com.metrica.formacion.apiusuariosmetrica.Service.usuariosService;
 import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
+import com.netflix.appinfo.InstanceInfo;
+import com.netflix.discovery.EurekaClient;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
-import javax.ws.rs.Path;
 import java.util.List;
 
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @Log4j2
 @RestController
 @RequestMapping("/clientes")
@@ -17,8 +20,14 @@ public class usuariosController {
     @Autowired
     private usuariosService usuariosService;
 
+    @Qualifier("eurekaClient")
+    @Autowired
+    private EurekaClient eurekaClient;
+
+    //
+
     @GetMapping("/lista-clientes")
-    public List<usuarios> listaUsuarios(){
+    public List<usuarios> listaUsuarios() {
 
         log.info("Mostrando lista de usuarios");
         return usuariosService.listarUsuarios();
@@ -27,17 +36,17 @@ public class usuariosController {
     /*GET*/
 
     @GetMapping("/buscarPorID/{id}")
-    public usuarios buscarPorId(@PathVariable("id") Integer id){
+    public usuarios buscarPorId(@PathVariable("id") Integer id) {
         return usuariosService.buscarPorId(id);
     }
 
     @GetMapping("/bucarPorNombre/{nombre}")
-    public List<usuarios> buscarPorNombre(@PathVariable("nombre") String nombre){
+    public List<usuarios> buscarPorNombre(@PathVariable("nombre") String nombre) {
         return usuariosService.buscarPorNombre(nombre);
     }
 
     @GetMapping("/bucarPorApellido/{apellido}")
-    public List<usuarios> buscarPorApelllido(@PathVariable("apellido") String apellido){
+    public List<usuarios> buscarPorApelllido(@PathVariable("apellido") String apellido) {
 
         return usuariosService.buscarPorApellido(apellido);
     }
@@ -45,9 +54,9 @@ public class usuariosController {
     /*POST*/
 
     @PostMapping("/guardarUsuario")
-    public usuarios guardarusuario(@RequestBody usuarios usuarios){
+    public usuarios guardarusuario(@RequestBody usuarios usuarios) {
 
-        if(usuariosService.isExiste(usuarios)){
+        if (usuariosService.isExiste(usuarios)) {
 
             //error si existe
 
@@ -60,7 +69,7 @@ public class usuariosController {
     /*PUT*/
 
     @PutMapping("/actulizarUsuario")
-    public usuarios actulizarUsuario(@RequestBody usuarios usuarios){
+    public usuarios actulizarUsuario(@RequestBody usuarios usuarios) {
 
         return usuariosService.guardarUsuario(usuarios);
     }
@@ -68,14 +77,21 @@ public class usuariosController {
     /*DELETE*/
 
     @DeleteMapping("/borrarUsuario/{id}")
-    public void borrarUsuario(@PathVariable("id") Integer id){
+    public void borrarUsuario(@PathVariable("id") Integer id) {
 
         usuariosService.borrarPorId(id);
     }
 
     @DeleteMapping("/borrarTODO")
-    public void borrarTodo(){
+    public void borrarTodo() {
 
         usuariosService.borrarTodo();
+    }
+
+    //Test eureka client
+
+    @GetMapping("/service-instances/{applicationName}")
+    public List<InstanceInfo> serviceInstancesByApplicationName(@PathVariable String applicationName) {
+        return this.eurekaClient.getApplication(applicationName).getInstancesAsIsFromEureka();
     }
 }

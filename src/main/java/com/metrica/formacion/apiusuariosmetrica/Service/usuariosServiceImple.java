@@ -57,6 +57,7 @@ public class usuariosServiceImple implements usuariosService {
 
     @Override
     public usuarios guardarUsuario(usuarios usuarios) {
+        log.info("guardando nuevo usuario", usuarios);
         return usuariosRepository.save(usuarios);
     }
 
@@ -113,13 +114,13 @@ public class usuariosServiceImple implements usuariosService {
 
     @Override
     public List<usuarios> buscarPorCreatedAT(LocalDate fecha1, LocalDate fecha2) {
-        return usuariosRepository.findByCreatedATBetween(fecha1.atTime(23,59,59),
-                fecha2.atTime(23,59,59));
+        return usuariosRepository.findByCreatedATBetween(fecha1.atTime(23, 59, 59),
+                fecha2.atTime(23, 59, 59));
     }
 
     @Override
     public List<usuarios> buscarPorCreatedATBefore(LocalDate fecha) {
-        return usuariosRepository.findByCreatedATBefore(fecha.atTime(23,59,59));
+        return usuariosRepository.findByCreatedATBefore(fecha.atTime(23, 59, 59));
     }
 
     //Ultima Modificacion
@@ -131,7 +132,7 @@ public class usuariosServiceImple implements usuariosService {
 
     @Override
     public List<usuarios> buscarPorUlimaModificacion(LocalDate fecha1, LocalDate fecha2) {
-        return usuariosRepository.findByUltimaModificacionBetween(fecha1.atTime(23,59,59),
-                fecha2.atTime(23,59,59));
+        return usuariosRepository.findByUltimaModificacionBetween(fecha1.atTime(23, 59, 59),
+                fecha2.atTime(23, 59, 59));
     }
 }

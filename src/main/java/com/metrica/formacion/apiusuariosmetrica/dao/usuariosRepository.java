@@ -11,11 +11,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
-public interface usuariosRepository extends JpaRepository<usuarios, Integer>{
+public interface usuariosRepository extends JpaRepository<usuarios, Integer> {
 
     //Borrar
 
-    void deleteByEmailContainingIgnoreCase (String email);
+    void deleteByEmailContainingIgnoreCase(String email);
 
     //Busqueda por nombre y apellido
 
@@ -25,15 +25,15 @@ public interface usuariosRepository extends JpaRepository<usuarios, Integer>{
 
     List<usuarios> findByNombreOrApellidoContainingIgnoreCase(String nombre, String apellido);
 
-    List<usuarios> findByGrupo (Integer idgrupo);
+    List<usuarios> findByGrupo(Integer idgrupo);
 
-    usuarios findByEmailContainingIgnoreCase (String email);
+    usuarios findByEmailContainingIgnoreCase(String email);
 
     /*Buscar por fechas*/
 
     //CreatedAT
 
-    List<usuarios> findByCreatedATBetween (LocalDateTime fecha1, LocalDateTime fecha2);
+    List<usuarios> findByCreatedATBetween(LocalDateTime fecha1, LocalDateTime fecha2);
 
     @Query(value = "SELECT * FROM usuarios WHERE DATE(usuarios.createdAT) = ?1", nativeQuery = true)
     List<usuarios> findByCreatedAT(String date);

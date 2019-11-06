@@ -40,13 +40,13 @@ public class usuarios {
     @Column(name = "tipo")
     private tipos tipo = tipos.Empleado;
 
-    public enum tipos {Empleado, LAB};
+    public enum tipos {Empleado, LAB}
+
+    ;
 
     //Constructor
 
-    public usuarios(){
-        log.info("nuevo usuario, con id: " + id);
-        createdAT = LocalDateTime.now();
+    public usuarios() {
     }
 
     //Getters and Setters
@@ -94,8 +94,9 @@ public class usuarios {
         return createdAT;
     }
 
-    public void setCreatedAT(LocalDateTime createdAT) {
-        this.createdAT = createdAT;
+    @PrePersist
+    public void setCreatedAT() {
+        this.createdAT = LocalDateTime.now();
     }
 
     public boolean isActivo() {
@@ -110,8 +111,9 @@ public class usuarios {
         return ultimaModificacion;
     }
 
-    public void setUltimaModificacion(LocalDateTime ultimaModificacion) {
-        this.ultimaModificacion = ultimaModificacion;
+    @PreUpdate
+    public void setUltimaModificacion() {
+        this.ultimaModificacion = LocalDateTime.now();
     }
 
     public void setUltima_modificacion() {
