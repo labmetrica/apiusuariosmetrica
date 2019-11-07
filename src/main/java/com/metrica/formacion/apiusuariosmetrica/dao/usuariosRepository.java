@@ -23,7 +23,7 @@ public interface usuariosRepository extends JpaRepository<usuarios, Integer> {
     List<usuarios> findByCreatedATBetween (LocalDateTime fecha1, LocalDateTime fecha2);
 
     @Query(value = "SELECT * FROM usuarios u WHERE DATEDIF",
-    nativeQuery = true);
+    nativeQuery = true)
     List<usuarios> findByCreatedAT(LocalDate localDate);
 
     usuarios findByEmailContainingIgnoreCase (String email);
