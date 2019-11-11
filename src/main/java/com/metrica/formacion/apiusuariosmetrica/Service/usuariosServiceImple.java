@@ -81,6 +81,11 @@ public class usuariosServiceImple implements usuariosService {
         usuariosRepository.deleteAll();
     }
 
+    @Override
+    public List<usuarios> buscarPorGrupo(int id) {
+        return usuariosRepository.findByGrupo(id);
+    }
+
     //select
 
     /*Nombre y apellido*/

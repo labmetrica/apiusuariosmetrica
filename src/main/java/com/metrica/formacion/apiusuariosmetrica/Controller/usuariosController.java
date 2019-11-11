@@ -40,15 +40,20 @@ public class usuariosController {
         return usuariosService.buscarPorId(id);
     }
 
-    @GetMapping("/bucarPorNombre/{nombre}")
+    @GetMapping("/buscarPorNombre/{nombre}")
     public List<usuarios> buscarPorNombre(@PathVariable("nombre") String nombre) {
         return usuariosService.buscarPorNombre(nombre);
     }
 
-    @GetMapping("/bucarPorApellido/{apellido}")
+    @GetMapping("/buscarPorApellido/{apellido}")
     public List<usuarios> buscarPorApelllido(@PathVariable("apellido") String apellido) {
-
         return usuariosService.buscarPorApellido(apellido);
+    }
+
+    @GetMapping("/buscarPorGrupo/{id}")
+    public List<usuarios> buscarPorGrupo(@PathVariable("id") Integer id){
+
+        return usuariosService.buscarPorGrupo(id);
     }
 
     /*POST*/
@@ -56,20 +61,13 @@ public class usuariosController {
     @PostMapping("/guardarUsuario")
     public usuarios guardarusuario(@RequestBody usuarios usuarios) {
 
-        if (usuariosService.isExiste(usuarios)) {
-
-            //error si existe
-
-            return null;
-        }
-
         return usuariosService.guardarUsuario(usuarios);
     }
 
     /*PUT*/
 
-    @PutMapping("/actulizarUsuario")
-    public usuarios actulizarUsuario(@RequestBody usuarios usuarios) {
+    @PutMapping("/actualizarUsuario")
+    public usuarios actualizarUsuario(@RequestBody usuarios usuarios) {
 
         return usuariosService.guardarUsuario(usuarios);
     }

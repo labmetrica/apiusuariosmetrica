@@ -28,6 +28,10 @@ public interface usuariosService {
 
     void borrarTodo();
 
+    //select - grupo
+
+    List<usuarios> buscarPorGrupo(int id);
+
     //select - Nombre
 
     List<usuarios> buscarPorNombre(String nombre);
