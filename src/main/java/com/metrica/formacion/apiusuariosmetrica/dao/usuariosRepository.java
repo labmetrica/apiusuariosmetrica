@@ -48,5 +48,5 @@ public interface usuariosRepository extends JpaRepository<usuarios, Integer> {
 
 	List<usuarios> findByUltimaModificacionBetween(LocalDateTime fecha1, LocalDateTime fecha2);
 
-	boolean exists(String email);
+	boolean existsByEmailContainingIgnoreCase(String email);
 }

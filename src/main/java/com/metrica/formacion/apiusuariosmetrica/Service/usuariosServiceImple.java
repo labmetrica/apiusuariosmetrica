@@ -78,7 +78,7 @@ public class usuariosServiceImple implements usuariosService {
 
 	@Override
 	public usuarios guardarUsuario(usuarios usuarios) {
-		if (usuariosRepository.existsById(usuarios.getId()) || usuariosRepository.exists(usuarios.getEmail())) {
+		if (usuariosRepository.existsById(usuarios.getId()) || usuariosRepository.existsByEmailContainingIgnoreCase(usuarios.getEmail())) {
 			throw new UsuarioSaveNotFoundException();
 		} else {
 			return usuariosRepository.save(usuarios);
