@@ -1,81 +1,90 @@
 package com.metrica.formacion.apiusuariosmetrica.Controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.metrica.formacion.apiusuariosmetrica.Service.usuariosService;
 import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
-import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import com.metrica.formacion.apiusuariosmetrica.error.BuscarIdNotFoundException;
 
-import javax.ws.rs.Path;
-import java.util.List;
+import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @RestController
 @RequestMapping("/clientes")
 public class usuariosController {
 
-    @Autowired
-    private usuariosService usuariosService;
+	@Autowired
+	private usuariosService usuariosService;
 
-    @GetMapping("/lista-clientes")
-    public List<usuarios> listaUsuarios(){
+	@GetMapping("/lista-clientes")
+	public List<usuarios> listaUsuarios() {
 
-        log.info("Mostrando lista de usuarios");
-        return usuariosService.listarUsuarios();
-    }
+		log.info("Mostrando lista de usuarios");
+		return usuariosService.listarUsuarios();
+	}
 
-    /*GET*/
+	/* GET */
 
-    @GetMapping("/buscarPorID/{id}")
-    public usuarios buscarPorId(@PathVariable("id") Integer id){
-        return usuariosService.buscarPorId(id);
-    }
+	@GetMapping("/buscarPorID/{id}")
+	public usuarios buscarPorId(@PathVariable("id") Integer id) throws BuscarIdNotFoundException {
+		return usuariosService.buscarPorId(id);
+	}
 
-    @GetMapping("/bucarPorNombre/{nombre}")
-    public List<usuarios> buscarPorNombre(@PathVariable("nombre") String nombre){
-        return usuariosService.buscarPorNombre(nombre);
-    }
+	@GetMapping("/bucarPorNombre/{nombre}")
+	public List<usuarios> buscarPorNombre(@PathVariable("nombre") String nombre) {
+		return usuariosService.buscarPorNombre(nombre);
+	}
 
-    @GetMapping("/bucarPorApellido/{apellido}")
-    public List<usuarios> buscarPorApelllido(@PathVariable("apellido") String apellido){
+	@GetMapping("/bucarPorApellido/{apellido}")
+	public List<usuarios> buscarPorApelllido(@PathVariable("apellido") String apellido) {
 
-        return usuariosService.buscarPorApellido(apellido);
-    }
+		return usuariosService.buscarPorApellido(apellido);
+	}
 
-    /*POST*/
+	/* POST */
 
-    @PostMapping("/guardarUsuario")
-    public usuarios guardarusuario(@RequestBody usuarios usuarios){
+	@PostMapping("/guardarUsuario")
+	public usuarios guardarusuario(@RequestBody usuarios usuarios) {
 
-        if(usuariosService.isExiste(usuarios)){
+		if (usuariosService.isExiste(usuarios)) {
 
-            //error si existe
+			// error si existe
 
-            return null;
-        }
+			return null;
+		}
 
-        return usuariosService.guardarUsuario(usuarios);
-    }
+		return usuariosService.guardarUsuario(usuarios);
+	}
 
-    /*PUT*/
+	/* PUT */
 
-    @PutMapping("/actulizarUsuario")
-    public usuarios actulizarUsuario(@RequestBody usuarios usuarios){
+	@PutMapping("/actulizarUsuario")
+	public usuarios actulizarUsuario(@RequestBody usuarios usuarios) {
 
-        return usuariosService.guardarUsuario(usuarios);
-    }
+		return usuariosService.guardarUsuario(usuarios);
+	}
 
-    /*DELETE*/
+	/* DELETE */
 
-    @DeleteMapping("/borrarUsuario/{id}")
-    public void borrarUsuario(@PathVariable("id") Integer id){
+	@DeleteMapping("/borrarUsuario/{id}")
+	public void borrarUsuario(@PathVariable("id") Integer id) {
 
-        usuariosService.borrarPorId(id);
-    }
+		usuariosService.borrarPorId(id);
+	}
 
-    @DeleteMapping("/borrarTODO")
-    public void borrarTodo(){
+	@DeleteMapping("/borrarTODO")
+	public void borrarTodo() {
 
-        usuariosService.borrarTodo();
-    }
+		usuariosService.borrarTodo();
+	}
 }
