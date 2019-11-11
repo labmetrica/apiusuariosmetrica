@@ -68,8 +68,8 @@ public class usuariosController {
 
 	/* PUT */
 
-	@PutMapping("/actulizarUsuario")
-	public usuarios actulizarUsuario(@RequestBody usuarios usuarios) {
+	@PutMapping("/actualizarUsuario")
+	public usuarios actualizarUsuario(@RequestBody usuarios usuarios) {
 
 		return usuariosService.guardarUsuario(usuarios);
 	}
