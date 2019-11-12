@@ -21,6 +21,12 @@ public class usuarios {
     @Column(name = "Apellido")
     private String apellido;
 
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "grupo")
     private int grupo;
 
@@ -39,6 +45,8 @@ public class usuarios {
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo")
     private tipos tipo = tipos.Empleado;
+
+
 
     public enum tipos {Empleado, LAB}
 
@@ -72,6 +80,22 @@ public class usuarios {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getGrupo() {
