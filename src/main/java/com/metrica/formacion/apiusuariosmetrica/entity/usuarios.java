@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j2;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Log4j2
 @Entity
@@ -46,7 +47,9 @@ public class usuarios {
     @Column(name = "tipo")
     private tipos tipo = tipos.Empleado;
 
-
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "ID"),inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<roles> roles;
 
     public enum tipos {Empleado, LAB}
 
@@ -151,5 +154,13 @@ public class usuarios {
 
     public void setTipo(tipos tipo) {
         this.tipo = tipo;
+    }
+
+    public List<roles> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<roles> roles) {
+        this.roles = roles;
     }
 }
