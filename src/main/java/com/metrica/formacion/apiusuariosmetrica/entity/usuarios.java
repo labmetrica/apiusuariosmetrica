@@ -22,7 +22,7 @@ public class usuarios {
     @Column(name = "Apellido")
     private String apellido;
 
-    @Column(name = "username")
+    @Column(name = "username",unique = true)
     private String username;
 
     @Column(name = "password")
@@ -31,7 +31,7 @@ public class usuarios {
     @Column(name = "grupo")
     private int grupo;
 
-    @Column(name = "email")
+    @Column(name = "email",unique = true)
     private String email;
 
     @Column(name = "createdAT")
@@ -47,7 +47,7 @@ public class usuarios {
     @Column(name = "tipo")
     private tipos tipo = tipos.Empleado;
 
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "ID"),inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<roles> roles;
 
