@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
-import com.metrica.formacion.apiusuariosmetrica.error.BuscarIdNotFoundException;
 
 public interface usuariosService {
 
@@ -14,9 +13,9 @@ public interface usuariosService {
 
 	boolean isExiste(int id);
 
-	usuarios buscarPorId(Integer id) throws BuscarIdNotFoundException;
+	usuarios buscarPorId(Integer id);
 
-	usuarios buscarPorIdEntity(Integer id) throws BuscarIdNotFoundException;
+	usuarios buscarPorIdEntity(Integer id);
 
 	usuarios guardarUsuario(usuarios usuarios);
 

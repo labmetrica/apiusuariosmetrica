@@ -3,21 +3,14 @@ package com.metrica.formacion.apiusuariosmetrica.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 import com.metrica.formacion.apiusuariosmetrica.Service.usuariosService;
 import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
-import com.metrica.formacion.apiusuariosmetrica.error.BuscarIdNotFoundException;
 
 import lombok.extern.log4j.Log4j2;
 
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+		RequestMethod.DELETE })
 @Log4j2
 @RestController
 @RequestMapping("/clientes")
@@ -36,7 +29,7 @@ public class usuariosController {
 	/* GET */
 
 	@GetMapping("/buscarPorID/{id}")
-	public usuarios buscarPorId(@PathVariable("id") Integer id) throws BuscarIdNotFoundException {
+	public usuarios buscarPorId(@PathVariable("id") Integer id) {
 		return usuariosService.buscarPorId(id);
 	}
 

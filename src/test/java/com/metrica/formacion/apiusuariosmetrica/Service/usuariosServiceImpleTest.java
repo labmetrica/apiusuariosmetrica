@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.metrica.formacion.apiusuariosmetrica.Config.SpringConfigurationFile;
 import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
-import com.metrica.formacion.apiusuariosmetrica.error.BuscarIdNotFoundException;
 
 @SpringBootTest(classes = SpringConfigurationFile.class)
 @Transactional
@@ -18,13 +17,13 @@ public class usuariosServiceImpleTest {
 	private usuariosService usuariosService;
 
 	@Test
-	void buscarPorId() throws BuscarIdNotFoundException {
+	void buscarPorId() {
 
 		Assertions.assertEquals(null, usuariosService.buscarPorId(96123));
 	}
 
 	@Test
-	void buscarPorIdEntity() throws BuscarIdNotFoundException {
+	void buscarPorIdEntity() {
 
 		final usuarios usuarios = null;
 
