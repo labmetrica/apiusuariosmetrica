@@ -1,33 +1,37 @@
 package com.metrica.formacion.apiusuariosmetrica.Service;
 
-import com.metrica.formacion.apiusuariosmetrica.Config.SpringConfigurationFile;
-import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.metrica.formacion.apiusuariosmetrica.Config.SpringConfigurationFile;
+import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
 
 @SpringBootTest(classes = SpringConfigurationFile.class)
 @Transactional
 public class usuariosServiceImpleTest {
 
-    @Autowired
-    private usuariosService usuariosService;
+	@Autowired
+	private usuariosService usuariosService;
 
-    @Test
-    void buscarPorId() {
+	@Test
+	void buscarPorId() {
 
-        Assertions.assertEquals(null, (usuariosService.buscarPorId(96123)));
-    }
+		Assertions.assertEquals(null, usuariosService.buscarPorId(96123));
+	}
 
-    @Test
-    void buscarPorIdEntity() {
+	@Test
+	void buscarPorIdEntity() {
+    
+    Assertions.assertEquals(null, (usuariosService.buscarPorId(96123)));
+  }
 
-        usuarios usuarios = null;
+  @Test
+  void buscarPorIdEntity() {
 
-        Assertions.assertEquals(usuarios, usuariosService.buscarPorIdEntity(96123));
-    }
+    final usuarios usuarios = null;
+		Assertions.assertEquals(usuarios, usuariosService.buscarPorIdEntity(96123));
+	}
 }

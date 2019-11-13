@@ -1,143 +1,168 @@
 package com.metrica.formacion.apiusuariosmetrica.Service;
 
-import com.metrica.formacion.apiusuariosmetrica.dao.usuariosRepository;
-import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
-import lombok.extern.log4j.Log4j2;
+import java.time.LocalDate;
+import java.util.List;
+
+import com.metrica.formacion.apiusuariosmetrica.exceptionHandler.CustomErrorResponse;
+import com.metrica.formacion.apiusuariosmetrica.exceptionHandler.Error;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
+import com.metrica.formacion.apiusuariosmetrica.dao.usuariosRepository;
+import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
+
+import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @Service
 public class usuariosServiceImple implements usuariosService {
 
-    @Autowired
-    private usuariosRepository usuariosRepository;
+	@Autowired
+	private usuariosRepository usuariosRepository;
 
-    @Override
-    public List<usuarios> listarUsuarios() {
-        return usuariosRepository.findAll();
-    }
+	@Override
+	public List<usuarios> listarUsuarios() {
+		return usuariosRepository.findAll();
+	}
 
-    @Override
-    public boolean isExiste(int id) {
-        return usuariosRepository.existsById(id);
-    }
+	@Override
+	public boolean isExiste(int id) {
+		return usuariosRepository.existsById(id);
+	}
 
-    @Override
-    public boolean isExiste(usuarios usuarios) {
-        return usuariosRepository.existsById(usuarios.getId());
-    }
+	@Override
+	public boolean isExiste(usuarios usuarios) {
+		return usuariosRepository.existsById(usuarios.getId());
+	}
 
-    /*ID*/
+	@Override
+	public usuarios buscarPorId(Integer id) {
+		log.info("buscar usuario con id: " + id);
 
-    @Override
-    public usuarios buscarPorId(Integer id) {
-        log.info("buscar usuario con id: " + id);
 
-        if (usuariosRepository.existsById(id)) {
+		usuarios usuario = null;
+		try {
+			usuario = usuariosRepository.findById(id).get();
+		} catch (Exception e) {
+			throw new CustomErrorResponse(usuarios.class,id.toString());
+		}
 
-            return usuariosRepository.findById(id).get();
-        }
+		/*if(usuario == null){
 
-        return null;
-    }
+			throw new CustomErrorResponse(usuarios.class, id.toString());
+		}*/
 
-    @Override
-    public usuarios buscarPorIdEntity(Integer id) {
+		return usuario;
+	}
+  
+  @Override
+  public usuarios guardarUsuario(usuarios usuarios) {
+      log.info("guardando nuevo usuario", usuarios);
+      return usuariosRepository.save(usuarios);
+  }
 
-        log.info("Buscando usuario con id" + id);
-        return usuariosRepository.getOne(id);
-    }
+	@Override
+	public usuarios buscarPorIdEntity(Integer id) {
+		log.info("Buscando usuario con id" + id);
+		return usuariosRepository.getOne(id);
+	}
 
-    //save
+	// save
 
-    @Override
-    public usuarios guardarUsuario(usuarios usuarios) {
-        log.info("guardando nuevo usuario", usuarios);
-        return usuariosRepository.save(usuarios);
-    }
+	@Override
+	public usuarios guardarUsuario(usuarios usuarios) {
+		return usuariosRepository.save(usuarios);
+	}
 
-    //delete
+	// delete
 
-    @Override
-    public void borrarPorId(Integer id) {
+	@Override
+	public void borrarPorId(Integer id) {
+		usuariosRepository.deleteById(id);
+	}
 
-        usuariosRepository.deleteById(id);
-    }
+	@Override
+	public void borrarUsuario(usuarios usuario) {
+		usuariosRepository.delete(usuario);
+	}
 
-    @Override
-    public void borrarUsuario(usuarios usuario) {
+	@Override
+	public void borrarTodo() {
+		usuariosRepository.deleteAll();
+	}
 
-        usuariosRepository.delete(usuario);
-    }
+	// select
+  
+  @Override
+  public List<usuarios> buscarPorGrupo(int id) {
+      return usuariosRepository.findByGrupo(id);
+  }
 
-    @Override
-    public void borrarTodo() {
+  //select
 
-        usuariosRepository.deleteAll();
-    }
+	/* Nombre y apellido */
 
-    @Override
-    public List<usuarios> buscarPorGrupo(int id) {
-        return usuariosRepository.findByGrupo(id);
-    }
+	@Override
+	public List<usuarios> buscarPorNombre(String nombre) {
+		log.info("Buscando usuario con nombre" + nombre);
+		return usuariosRepository.findByNombreContainingIgnoreCase(nombre);
+	}
 
-    //select
+	@Override
+	public List<usuarios> buscarPorApellido(String apellido) {
+		return usuariosRepository.findByApellidoContainingIgnoreCase(apellido);
+	}
 
-    /*Nombre y apellido*/
+	@Override
+	public List<usuarios> buscarPorNombreyApellido(String nombre, String apellido) {
+		return usuariosRepository.findByNombreOrApellidoContainingIgnoreCase(nombre, apellido);
+	}
 
-    @Override
-    public List<usuarios> buscarPorNombre(String nombre) {
-        log.info("Buscando usuario con nombre" + nombre);
-        return usuariosRepository.findByNombreContainingIgnoreCase(nombre);
-    }
+	// select
 
-    @Override
-    public List<usuarios> buscarPorApellido(String apellido) {
-        return usuariosRepository.findByApellidoContainingIgnoreCase(apellido);
-    }
+	/* Por fecha - createdAt y ultima modificacion */
 
-    @Override
-    public List<usuarios> buscarPorNombreyApellido(String nombre, String apellido) {
-        return usuariosRepository.findByNombreOrApellidoContainingIgnoreCase(nombre, apellido);
-    }
+	// cretedAT
 
-    //select
+	@Override
+	public List<usuarios> buscarPorCreatedAT(LocalDate localDate) {
+		return usuariosRepository.findByCreatedAT(localDate.toString());
+	}
 
-    /*Por fecha - createdAt y ultima modificacion*/
 
-    //cretedAT
+	@Override
+	public List<usuarios> buscarPorCreatedAT(LocalDate fecha1, LocalDate fecha2) {
+		return usuariosRepository.findByCreatedATBetween(fecha1.atTime(23, 59, 59), fecha2.atTime(23, 59, 59));
+	}
 
-    @Override
-    public List<usuarios> buscarPorCreatedAT(LocalDate localDate) {
-        return usuariosRepository.findByCreatedAT(localDate.toString());
-    }
+	@Override
+	public List<usuarios> buscarPorCreatedATBefore(LocalDate fecha) {
+		return usuariosRepository.findByCreatedATBefore(fecha.atTime(23, 59, 59));
+	}
+  
+  @Override
+  public List<usuarios> buscarPorCreatedAT(LocalDate fecha1, LocalDate fecha2) {
+      return usuariosRepository.findByCreatedATBetween(fecha1.atTime(23, 59, 59),
+              fecha2.atTime(23, 59, 59));
+  }
+  
+	// Ultima Modificacion
 
-    @Override
-    public List<usuarios> buscarPorCreatedAT(LocalDate fecha1, LocalDate fecha2) {
-        return usuariosRepository.findByCreatedATBetween(fecha1.atTime(23, 59, 59),
-                fecha2.atTime(23, 59, 59));
-    }
+	@Override
+	public List<usuarios> buscarPorUlimaModificacion(LocalDate fecha) {
+		return usuariosRepository.findByUltimaModificacion(fecha.toString());
+	}
 
-    @Override
-    public List<usuarios> buscarPorCreatedATBefore(LocalDate fecha) {
-        return usuariosRepository.findByCreatedATBefore(fecha.atTime(23, 59, 59));
-    }
+	@Override
+	public List<usuarios> buscarPorUlimaModificacion(LocalDate fecha1, LocalDate fecha2) {
+		return usuariosRepository.findByUltimaModificacionBetween(fecha1.atTime(23, 59, 59), fecha2.atTime(23, 59, 59));
+	}
 
-    //Ultima Modificacion
-
-    @Override
-    public List<usuarios> buscarPorUlimaModificacion(LocalDate fecha) {
-        return usuariosRepository.findByUltimaModificacion(fecha.toString());
-    }
-
-    @Override
-    public List<usuarios> buscarPorUlimaModificacion(LocalDate fecha1, LocalDate fecha2) {
-        return usuariosRepository.findByUltimaModificacionBetween(fecha1.atTime(23, 59, 59),
-                fecha2.atTime(23, 59, 59));
-    }
+  @Override
+  public List<usuarios> buscarPorUlimaModificacion(LocalDate fecha1, LocalDate fecha2) {
+      return usuariosRepository.findByUltimaModificacionBetween(fecha1.atTime(23, 59, 59),
+              fecha2.atTime(23, 59, 59));
+  }
+  
 }
