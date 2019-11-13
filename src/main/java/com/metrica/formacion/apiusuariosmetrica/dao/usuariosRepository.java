@@ -11,7 +11,7 @@ import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
 
 @Repository
 public interface usuariosRepository extends JpaRepository<usuarios, Integer> {
-
+  
 	// Borrar
 
 	void deleteByEmailContainingIgnoreCase(String email);
@@ -28,7 +28,9 @@ public interface usuariosRepository extends JpaRepository<usuarios, Integer> {
 
 	usuarios findByEmailContainingIgnoreCase(String email);
 
-	/* Buscar por fechas */
+  List<usuarios> findByGrupo(Integer idgrupo);
+
+  usuarios findByEmailContainingIgnoreCase(String email);
 
 	// CreatedAT
 
@@ -36,6 +38,8 @@ public interface usuariosRepository extends JpaRepository<usuarios, Integer> {
 
 	@Query(value = "SELECT * FROM usuarios WHERE DATE(usuarios.createdAT) = ?1", nativeQuery = true)
 	List<usuarios> findByCreatedAT(String date);
+
+  List<usuarios> findByCreatedATBetween(LocalDateTime fecha1, LocalDateTime fecha2);
 
 	List<usuarios> findByCreatedATBefore(LocalDateTime localDateTime);
 

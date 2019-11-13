@@ -1,8 +1,8 @@
 package com.metrica.formacion.apiusuariosmetrica.Service;
 
+import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
 import java.time.LocalDate;
 import java.util.List;
-
 import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
 
 public interface usuariosService {
@@ -24,10 +24,14 @@ public interface usuariosService {
 	void borrarPorId(Integer id);
 
 	void borrarUsuario(usuarios usuario);
+  
+  void borrarTodo();
+    
+  //select - grupo
 
-	void borrarTodo();
+  List<usuarios> buscarPorGrupo(int id);
 
-	// select - Nombre
+	//select - Nombre
 
 	List<usuarios> buscarPorNombre(String nombre);
 

@@ -24,9 +24,14 @@ public class usuariosServiceImpleTest {
 
 	@Test
 	void buscarPorIdEntity() {
+    
+    Assertions.assertEquals(null, (usuariosService.buscarPorId(96123)));
+  }
 
-		final usuarios usuarios = null;
+  @Test
+  void buscarPorIdEntity() {
 
+    final usuarios usuarios = null;
 		Assertions.assertEquals(usuarios, usuariosService.buscarPorIdEntity(96123));
 	}
 }
