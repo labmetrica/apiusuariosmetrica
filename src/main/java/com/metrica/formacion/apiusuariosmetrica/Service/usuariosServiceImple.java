@@ -3,7 +3,10 @@ package com.metrica.formacion.apiusuariosmetrica.Service;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.metrica.formacion.apiusuariosmetrica.exceptionHandler.CustomErrorResponse;
+import com.metrica.formacion.apiusuariosmetrica.exceptionHandler.Error;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.metrica.formacion.apiusuariosmetrica.dao.usuariosRepository;
@@ -37,7 +40,20 @@ public class usuariosServiceImple implements usuariosService {
 	public usuarios buscarPorId(Integer id) {
 		log.info("buscar usuario con id: " + id);
 
-		return usuariosRepository.getOne(id);
+
+		usuarios usuario = null;
+		try {
+			usuario = usuariosRepository.findById(id).get();
+		} catch (Exception e) {
+			throw new CustomErrorResponse(usuarios.class,id.toString());
+		}
+
+		/*if(usuario == null){
+
+			throw new CustomErrorResponse(usuarios.class, id.toString());
+		}*/
+
+		return usuario;
 	}
 
 	@Override

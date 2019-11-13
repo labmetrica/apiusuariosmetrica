@@ -3,12 +3,9 @@ package com.metrica.formacion.apiusuariosmetrica.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.metrica.formacion.apiusuariosmetrica.Service.usuariosService;
 import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
-import com.metrica.formacion.apiusuariosmetrica.error.CustomErrorResponse;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -32,15 +29,8 @@ public class usuariosController {
 	/* GET */
 
 	@GetMapping("/buscarPorID/{id}")
-	public ResponseEntity<Object> buscarPorId(@PathVariable("id") Integer id) {
-		try {
-			usuariosService.buscarPorId(id);
-		} catch (final CustomErrorResponse e) {
-
-			return new ResponseEntity<>(new CustomErrorResponse(e.getStatus(), e.getError(), e.getMessage()),
-					HttpStatus.BAD_REQUEST);
-		}
-		return new ResponseEntity<>(usuariosService.buscarPorId(id), HttpStatus.OK);
+	public usuarios buscarPorId(@PathVariable("id") Integer id) {
+		return usuariosService.buscarPorId(id);
 	}
 
 	@GetMapping("/bucarPorNombre/{nombre}")
