@@ -1,36 +1,23 @@
 package com.metrica.formacion.apiusuariosmetrica.error;
 
-import java.time.LocalDateTime;
+import org.springframework.http.HttpStatus;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+public class CustomErrorResponse extends RuntimeException {
+	private final HttpStatus status;
+	private final String error;
 
-public class CustomErrorResponse {
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
-	private LocalDateTime timestamp;
-	private int status;
-	private String error;
-
-	public LocalDateTime getTimestamp() {
-		return timestamp;
-	}
-
-	public void setTimestamp(LocalDateTime timestamp) {
-		this.timestamp = timestamp;
-	}
-
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
+	public CustomErrorResponse(HttpStatus status, String error, String message) {
+		super(message);
 		this.status = status;
+		this.error = error;
+	}
+
+	public HttpStatus getStatus() {
+		return status;
 	}
 
 	public String getError() {
 		return error;
 	}
 
-	public void setError(String error) {
-		this.error = error;
-	}
 }
