@@ -4,9 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.metrica.formacion.apiusuariosmetrica.exceptionHandler.CustomErrorResponse;
-import com.metrica.formacion.apiusuariosmetrica.exceptionHandler.Error;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.metrica.formacion.apiusuariosmetrica.dao.usuariosRepository;
@@ -38,20 +36,18 @@ public class usuariosServiceImple implements usuariosService {
 
 	@Override
 	public usuarios buscarPorId(Integer id) {
+
 		log.info("buscar usuario con id: " + id);
-
-
 		usuarios usuario = null;
+
 		try {
 			usuario = usuariosRepository.findById(id).get();
-		} catch (Exception e) {
-			throw new CustomErrorResponse(usuarios.class,id.toString());
+
+		}
+		catch (Exception ex){
+			throw new CustomErrorResponse(usuarios.class, "No existe usuario con id: " + id, ex.getMessage());
 		}
 
-		/*if(usuario == null){
-
-			throw new CustomErrorResponse(usuarios.class, id.toString());
-		}*/
 
 		return usuario;
 	}
@@ -66,7 +62,15 @@ public class usuariosServiceImple implements usuariosService {
 
 	@Override
 	public usuarios guardarUsuario(usuarios usuarios) {
-		return usuariosRepository.save(usuarios);
+
+		try {
+
+			return usuariosRepository.save(usuarios);
+		}
+		catch (Exception e) {
+
+			throw new CustomErrorResponse(usuarios.class, "El email: " + usuarios.getEmail() + ", ya existe", e.getMessage());
+		}
 	}
 
 	// delete

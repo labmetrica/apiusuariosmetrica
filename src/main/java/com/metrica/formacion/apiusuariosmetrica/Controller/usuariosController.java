@@ -21,7 +21,6 @@ public class usuariosController {
 
 	@GetMapping("/lista-clientes")
 	public List<usuarios> listaUsuarios() {
-
 		log.info("Mostrando lista de usuarios");
 		return usuariosService.listarUsuarios();
 	}
@@ -33,14 +32,13 @@ public class usuariosController {
 		return usuariosService.buscarPorId(id);
 	}
 
-	@GetMapping("/bucarPorNombre/{nombre}")
+	@GetMapping("/buscarPorNombre/{nombre}")
 	public List<usuarios> buscarPorNombre(@PathVariable("nombre") String nombre) {
 		return usuariosService.buscarPorNombre(nombre);
 	}
 
-	@GetMapping("/bucarPorApellido/{apellido}")
+	@GetMapping("/buscarPorApellido/{apellido}")
 	public List<usuarios> buscarPorApelllido(@PathVariable("apellido") String apellido) {
-
 		return usuariosService.buscarPorApellido(apellido);
 	}
 
@@ -48,14 +46,6 @@ public class usuariosController {
 
 	@PostMapping("/guardarUsuario")
 	public usuarios guardarusuario(@RequestBody usuarios usuarios) {
-
-		if (usuariosService.isExiste(usuarios)) {
-
-			// error si existe
-
-			return null;
-		}
-
 		return usuariosService.guardarUsuario(usuarios);
 	}
 
@@ -63,7 +53,6 @@ public class usuariosController {
 
 	@PutMapping("/actulizarUsuario")
 	public usuarios actulizarUsuario(@RequestBody usuarios usuarios) {
-
 		return usuariosService.guardarUsuario(usuarios);
 	}
 
@@ -71,13 +60,11 @@ public class usuariosController {
 
 	@DeleteMapping("/borrarUsuario/{id}")
 	public void borrarUsuario(@PathVariable("id") Integer id) {
-
 		usuariosService.borrarPorId(id);
 	}
 
 	@DeleteMapping("/borrarTODO")
 	public void borrarTodo() {
-
 		usuariosService.borrarTodo();
 	}
 }
