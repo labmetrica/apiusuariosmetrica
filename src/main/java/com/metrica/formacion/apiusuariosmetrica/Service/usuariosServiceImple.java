@@ -3,14 +3,12 @@ package com.metrica.formacion.apiusuariosmetrica.Service;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.metrica.formacion.apiusuariosmetrica.exceptionHandler.CustomErrorResponse;
-import com.metrica.formacion.apiusuariosmetrica.exceptionHandler.Error;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.metrica.formacion.apiusuariosmetrica.dao.usuariosRepository;
 import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
+import com.metrica.formacion.apiusuariosmetrica.exceptionHandler.CustomErrorResponse;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -40,27 +38,21 @@ public class usuariosServiceImple implements usuariosService {
 	public usuarios buscarPorId(Integer id) {
 		log.info("buscar usuario con id: " + id);
 
-
 		usuarios usuario = null;
 		try {
 			usuario = usuariosRepository.findById(id).get();
-		} catch (Exception e) {
-			throw new CustomErrorResponse(usuarios.class,id.toString());
+		} catch (final Exception e) {
+			throw new CustomErrorResponse(usuarios.class, id.toString());
 		}
 
-		/*if(usuario == null){
-
-			throw new CustomErrorResponse(usuarios.class, id.toString());
-		}*/
+		/*
+		 * if(usuario == null){
+		 *
+		 * throw new CustomErrorResponse(usuarios.class, id.toString()); }
+		 */
 
 		return usuario;
 	}
-  
-  @Override
-  public usuarios guardarUsuario(usuarios usuarios) {
-      log.info("guardando nuevo usuario", usuarios);
-      return usuariosRepository.save(usuarios);
-  }
 
 	@Override
 	public usuarios buscarPorIdEntity(Integer id) {
@@ -72,6 +64,7 @@ public class usuariosServiceImple implements usuariosService {
 
 	@Override
 	public usuarios guardarUsuario(usuarios usuarios) {
+		log.info("guardando nuevo usuario", usuarios);
 		return usuariosRepository.save(usuarios);
 	}
 
@@ -93,13 +86,13 @@ public class usuariosServiceImple implements usuariosService {
 	}
 
 	// select
-  
-  @Override
-  public List<usuarios> buscarPorGrupo(int id) {
-      return usuariosRepository.findByGrupo(id);
-  }
 
-  //select
+	@Override
+	public List<usuarios> buscarPorGrupo(int id) {
+		return usuariosRepository.findByGrupo(id);
+	}
+
+	// select
 
 	/* Nombre y apellido */
 
@@ -130,7 +123,6 @@ public class usuariosServiceImple implements usuariosService {
 		return usuariosRepository.findByCreatedAT(localDate.toString());
 	}
 
-
 	@Override
 	public List<usuarios> buscarPorCreatedAT(LocalDate fecha1, LocalDate fecha2) {
 		return usuariosRepository.findByCreatedATBetween(fecha1.atTime(23, 59, 59), fecha2.atTime(23, 59, 59));
@@ -140,13 +132,7 @@ public class usuariosServiceImple implements usuariosService {
 	public List<usuarios> buscarPorCreatedATBefore(LocalDate fecha) {
 		return usuariosRepository.findByCreatedATBefore(fecha.atTime(23, 59, 59));
 	}
-  
-  @Override
-  public List<usuarios> buscarPorCreatedAT(LocalDate fecha1, LocalDate fecha2) {
-      return usuariosRepository.findByCreatedATBetween(fecha1.atTime(23, 59, 59),
-              fecha2.atTime(23, 59, 59));
-  }
-  
+
 	// Ultima Modificacion
 
 	@Override
@@ -159,10 +145,4 @@ public class usuariosServiceImple implements usuariosService {
 		return usuariosRepository.findByUltimaModificacionBetween(fecha1.atTime(23, 59, 59), fecha2.atTime(23, 59, 59));
 	}
 
-  @Override
-  public List<usuarios> buscarPorUlimaModificacion(LocalDate fecha1, LocalDate fecha2) {
-      return usuariosRepository.findByUltimaModificacionBetween(fecha1.atTime(23, 59, 59),
-              fecha2.atTime(23, 59, 59));
-  }
-  
 }
