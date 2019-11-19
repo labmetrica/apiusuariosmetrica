@@ -24,65 +24,70 @@ public class usuariosController {
 	@Autowired
 	private usuariosService usuariosService;
 
-  @Qualifier("eurekaClient")
-  @Autowired
-  private EurekaClient eurekaClient;
-  
-  //
+    @Qualifier("eurekaClient")
+    @Autowired
+    private EurekaClient eurekaClient;
 
-  @GetMapping("/lista-clientes")
-  public List<usuarios> listaUsuarios() {
-		log.info("Mostrando lista de usuarios");
-		return usuariosService.listarUsuarios();
-	}
+    //
 
-	/* GET */
-  
-  @GetMapping("/buscarPorID/{id}")
-  public usuarios buscarPorId(@PathVariable("id") Integer id) {
+    @GetMapping("/lista-clientes")
+    public List<usuarios> listaUsuarios() {
+        log.info("Mostrando lista de usuarios");
+        return usuariosService.listarUsuarios();
+    }
+
+    /* GET */
+
+    @GetMapping("/buscarPorID/{id}")
+    public usuarios buscarPorId(@PathVariable("id") Integer id) {
       return usuariosService.buscarPorId(id);
   }
 
-	@GetMapping("/buscarPorNombre/{nombre}")
-	public List<usuarios> buscarPorNombre(@PathVariable("nombre") String nombre) {
-		return usuariosService.buscarPorNombre(nombre);
-	}
+    @GetMapping("/buscarPorNombre/{nombre}")
+    public List<usuarios> buscarPorNombre(@PathVariable("nombre") String nombre) {
+        return usuariosService.buscarPorNombre(nombre);
+    }
 
-	@GetMapping("/buscarPorApellido/{apellido}")
-	public List<usuarios> buscarPorApelllido(@PathVariable("apellido") String apellido) {
-		return usuariosService.buscarPorApellido(apellido);
-	}
+    @GetMapping("/buscarPorApellido/{apellido}")
+    public List<usuarios> buscarPorApelllido(@PathVariable("apellido") String apellido) {
+        return usuariosService.buscarPorApellido(apellido);
+    }
 
-	/* POST */
-  
-  @PostMapping("/guardarUsuario")
-  public usuarios guardarusuario(@RequestBody usuarios usuarios) {
-		return usuariosService.guardarUsuario(usuarios);
-	}
+    @GetMapping("/buscarPorGrupo/{key}")
+    public List<usuarios> buscarPorGrupo(@PathVariable("key") Integer id){
+        return usuariosService.buscarPorGrupo(id);
+    }
 
-	/* PUT */
+    /* POST */
 
-  @PutMapping("/actualizarUsuario")
-  public usuarios actualizarUsuario(@RequestBody usuarios usuarios) {
+    @PostMapping("/guardarUsuario")
+    public usuarios guardarusuario(@RequestBody usuarios usuarios) {
+        return usuariosService.guardarUsuario(usuarios);
+    }
+
+    /* PUT */
+
+    @PutMapping("/actualizarUsuario")
+    public usuarios actualizarUsuario(@RequestBody usuarios usuarios) {
     return usuariosService.guardarUsuario(usuarios);
-	}
+    }
 
-	/* DELETE */
-    
-  @DeleteMapping("/borrarUsuario/{id}")
-  public void borrarUsuario(@PathVariable("id") Integer id) {
+    /* DELETE */
+
+    @DeleteMapping("/borrarUsuario/{id}")
+    public void borrarUsuario(@PathVariable("id") Integer id) {
     usuariosService.borrarPorId(id);
-	}
+    }
 
-	@DeleteMapping("/borrarTODO")
-	public void borrarTodo() {
-		usuariosService.borrarTodo();
-	}
-    
-  //Test eureka client
+    @DeleteMapping("/borrarTODO")
+    public void borrarTodo() {
+        usuariosService.borrarTodo();
+    }
 
-  @GetMapping("/service-instances/{applicationName}")
-  public List<InstanceInfo> serviceInstancesByApplicationName(@PathVariable String applicationName) {
+    //Test eureka client
+
+    @GetMapping("/service-instances/{applicationName}")
+    public List<InstanceInfo> serviceInstancesByApplicationName(@PathVariable String applicationName) {
       return this.eurekaClient.getApplication(applicationName).getInstancesAsIsFromEureka();
-  }
+    }
 }
