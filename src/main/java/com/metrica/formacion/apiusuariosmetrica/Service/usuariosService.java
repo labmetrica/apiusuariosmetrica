@@ -1,58 +1,56 @@
 package com.metrica.formacion.apiusuariosmetrica.Service;
 
 import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
+import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
 
 public interface usuariosService {
 
-    List<usuarios> listarUsuarios();
+	List<usuarios> listarUsuarios();
 
-    boolean isExiste(usuarios usuarios);
+	boolean isExiste(usuarios usuarios);
 
-    boolean isExiste(int id);
+	boolean isExiste(int id);
 
-    usuarios buscarPorId(Integer id);
+	usuarios buscarPorId(Integer id);
 
-    usuarios buscarPorIdEntity(Integer id);
+	usuarios buscarPorIdEntity(Integer id);
 
-    usuarios guardarUsuario(usuarios usuarios);
+	usuarios guardarUsuario(usuarios usuarios);
 
-    //delete
+	// delete
 
-    void borrarPorId(Integer id);
+	void borrarPorId(Integer id);
 
-    void borrarUsuario(usuarios usuario);
+	void borrarUsuario(usuarios usuario);
+  
+  void borrarTodo();
+    
+  //select - grupo
 
-    void borrarTodo();
+  List<usuarios> buscarPorGrupo(int id);
 
-    //select - grupo
+	//select - Nombre
 
-    List<usuarios> buscarPorGrupo(int id);
+	List<usuarios> buscarPorNombre(String nombre);
 
-    //select - Nombre
+	List<usuarios> buscarPorApellido(String apellido);
 
-    List<usuarios> buscarPorNombre(String nombre);
+	List<usuarios> buscarPorNombreyApellido(String nombre, String apellido);
 
-    List<usuarios> buscarPorApellido(String apellido);
+	// select - Fecha
 
-    List<usuarios> buscarPorNombreyApellido(String nombre, String apellido);
+	List<usuarios> buscarPorCreatedAT(LocalDate fecha);
 
-    //select - Fecha
+	List<usuarios> buscarPorCreatedAT(LocalDate fecha1, LocalDate fecha2);
 
-    List<usuarios> buscarPorCreatedAT(LocalDate fecha);
+	List<usuarios> buscarPorCreatedATBefore(LocalDate fecha);
+  
+	/**/
 
-    List<usuarios> buscarPorCreatedAT(LocalDate fecha1, LocalDate fecha2);
+	List<usuarios> buscarPorUlimaModificacion(LocalDate fecha);
 
-    List<usuarios> buscarPorCreatedATBefore(LocalDate fecha);
-
-    /**/
-
-    List<usuarios> buscarPorUlimaModificacion(LocalDate fecha);
-
-    List<usuarios> buscarPorUlimaModificacion(LocalDate fecha1, LocalDate fecha2);
-
+	List<usuarios> buscarPorUlimaModificacion(LocalDate fecha1, LocalDate fecha2);
 
 }
