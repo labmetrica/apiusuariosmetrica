@@ -38,18 +38,9 @@ public class usuariosServiceImple implements usuariosService {
 	public usuarios buscarPorId(Integer id) {
 
 		log.info("buscar usuario con id: " + id);
-		usuarios usuario = null;
 
-		try {
-			usuario = usuariosRepository.findById(id).get();
-
-		}
-		catch (Exception ex){
-			throw new CustomErrorResponse(usuarios.class, "No existe usuario con id: " + id, ex.getMessage());
-		}
-
-
-		return usuario;
+		return usuariosRepository.findById(id).
+				orElseThrow(() -> new CustomErrorResponse(usuarios.class, "No existe usuario con id: " + id,""));
 	}
 
 	@Override

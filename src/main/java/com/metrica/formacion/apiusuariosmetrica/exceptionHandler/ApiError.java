@@ -18,6 +18,7 @@ public class ApiError {
 	private LocalDateTime fecha;
 	private String mensaje;
 	private String exceptionMessage;
+	private Exception exception;
 
 	public ApiError(HttpStatus status) {
 		this.status = status;
