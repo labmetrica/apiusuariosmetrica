@@ -11,35 +11,29 @@ import java.time.LocalDateTime;
 @JsonTypeIdResolver(LowerCaseClassName.class)
 @Data
 @JsonTypeInfo(include = JsonTypeInfo.As.WRAPPER_OBJECT, use = JsonTypeInfo.Id.CUSTOM, property = "error", visible = true)
-public class Error {
+public class ApiError {
 
-	private HttpStatus httpStatus;
+	private HttpStatus status;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
 	private LocalDateTime fecha;
 	private String mensaje;
 	private String exceptionMessage;
 
-	public Error(HttpStatus httpStatus) {
-		this.httpStatus = httpStatus;
+	public ApiError(HttpStatus status) {
+		this.status = status;
+		this.fecha = LocalDateTime.now();
 	}
 
-	public Error(HttpStatus httpStatus, LocalDateTime fecha) {
-		this.httpStatus = httpStatus;
-		this.fecha = fecha;
-	}
-
-	public Error(HttpStatus httpStatus, LocalDateTime fecha, String mensaje) {
-		this.httpStatus = httpStatus;
-		this.fecha = fecha;
+	public ApiError(HttpStatus status, String mensaje) {
+		this.status = status;
+		this.fecha = LocalDateTime.now();
 		this.mensaje = mensaje;
 	}
 
-	public Error(HttpStatus httpStatus, LocalDateTime fecha, String mensaje, String exceptionMessage) {
-		this.httpStatus = httpStatus;
-		this.fecha = fecha;
+	public ApiError(HttpStatus status, String mensaje, String exceptionMessage) {
+		this.status = status;
+		this.fecha = LocalDateTime.now();
 		this.mensaje = mensaje;
 		this.exceptionMessage = exceptionMessage;
 	}
-
-
 }

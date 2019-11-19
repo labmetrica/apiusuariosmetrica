@@ -32,7 +32,6 @@ public class usuariosController {
 
   @GetMapping("/lista-clientes")
   public List<usuarios> listaUsuarios() {
-    
 		log.info("Mostrando lista de usuarios");
 		return usuariosService.listarUsuarios();
 	}
@@ -44,24 +43,18 @@ public class usuariosController {
       return usuariosService.buscarPorId(id);
   }
 
-  @GetMapping("/buscarPorNombre/{nombre}")
-  public List<usuarios> buscarPorNombre(@PathVariable("nombre") String nombre) {
-      return usuariosService.buscarPorNombre(nombre);
-  }
+	@GetMapping("/buscarPorNombre/{nombre}")
+	public List<usuarios> buscarPorNombre(@PathVariable("nombre") String nombre) {
+		return usuariosService.buscarPorNombre(nombre);
+	}
 
-  @GetMapping("/buscarPorApellido/{apellido}")
-  public List<usuarios> buscarPorApelllido(@PathVariable("apellido") String apellido) {
-      return usuariosService.buscarPorApellido(apellido);
-  }
+	@GetMapping("/buscarPorApellido/{apellido}")
+	public List<usuarios> buscarPorApelllido(@PathVariable("apellido") String apellido) {
+		return usuariosService.buscarPorApellido(apellido);
+	}
 
-  @GetMapping("/buscarPorGrupo/{id}")
-  public List<usuarios> buscarPorGrupo(@PathVariable("id") Integer id){
-
-      return usuariosService.buscarPorGrupo(id);
-  }
-
-  /*POST*/
-
+	/* POST */
+  
   @PostMapping("/guardarUsuario")
   public usuarios guardarusuario(@RequestBody usuarios usuarios) {
 		return usuariosService.guardarUsuario(usuarios);

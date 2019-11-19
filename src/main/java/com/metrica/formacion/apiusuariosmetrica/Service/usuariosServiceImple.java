@@ -2,14 +2,11 @@ package com.metrica.formacion.apiusuariosmetrica.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-
+import com.metrica.formacion.apiusuariosmetrica.exceptionHandler.CustomErrorResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.metrica.formacion.apiusuariosmetrica.dao.usuariosRepository;
 import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
-import com.metrica.formacion.apiusuariosmetrica.exceptionHandler.CustomErrorResponse;
-
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -37,21 +34,9 @@ public class usuariosServiceImple implements usuariosService {
 	@Override
 	public usuarios buscarPorId(Integer id) {
 		log.info("buscar usuario con id: " + id);
-
-		usuarios usuario = null;
-		try {
-			usuario = usuariosRepository.findById(id).get();
-		} catch (final Exception e) {
-			throw new CustomErrorResponse(usuarios.class, id.toString());
-		}
-
-		/*
-		 * if(usuario == null){
-		 *
-		 * throw new CustomErrorResponse(usuarios.class, id.toString()); }
-		 */
-
-		return usuario;
+    
+		return usuariosRepository.findById(id).
+				orElseThrow(() -> new CustomErrorResponse(usuarios.class, "No existe usuario con id: " + id,"EntityNotFound"));
 	}
 
 	@Override
