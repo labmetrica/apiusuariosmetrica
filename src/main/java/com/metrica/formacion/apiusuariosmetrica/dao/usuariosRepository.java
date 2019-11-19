@@ -28,14 +28,12 @@ public interface usuariosRepository extends JpaRepository<usuarios, Integer> {
 
 	usuarios findByEmailContainingIgnoreCase(String email);
 
-	/* Buscar por fechas */
-
 	// CreatedAT
-
-	List<usuarios> findByCreatedATBetween(LocalDateTime fecha1, LocalDateTime fecha2);
 
 	@Query(value = "SELECT * FROM usuarios WHERE DATE(usuarios.createdAT) = ?1", nativeQuery = true)
 	List<usuarios> findByCreatedAT(String date);
+
+	List<usuarios> findByCreatedATBetween(LocalDateTime fecha1, LocalDateTime fecha2);
 
 	List<usuarios> findByCreatedATBefore(LocalDateTime localDateTime);
 

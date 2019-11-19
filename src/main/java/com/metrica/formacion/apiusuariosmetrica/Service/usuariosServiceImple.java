@@ -33,9 +33,8 @@ public class usuariosServiceImple implements usuariosService {
 
 	@Override
 	public usuarios buscarPorId(Integer id) {
-
 		log.info("buscar usuario con id: " + id);
-
+    
 		return usuariosRepository.findById(id).
 				orElseThrow(() -> new CustomErrorResponse(usuarios.class, "No existe usuario con id: " + id,"EntityNotFound"));
 	}
@@ -50,6 +49,7 @@ public class usuariosServiceImple implements usuariosService {
 
 	@Override
 	public usuarios guardarUsuario(usuarios usuarios) {
+		log.info("guardando nuevo usuario", usuarios);
 		return usuariosRepository.save(usuarios);
 	}
 
@@ -68,6 +68,13 @@ public class usuariosServiceImple implements usuariosService {
 	@Override
 	public void borrarTodo() {
 		usuariosRepository.deleteAll();
+	}
+
+	// select
+
+	@Override
+	public List<usuarios> buscarPorGrupo(int id) {
+		return usuariosRepository.findByGrupo(id);
 	}
 
 	// select
@@ -122,4 +129,5 @@ public class usuariosServiceImple implements usuariosService {
 	public List<usuarios> buscarPorUlimaModificacion(LocalDate fecha1, LocalDate fecha2) {
 		return usuariosRepository.findByUltimaModificacionBetween(fecha1.atTime(23, 59, 59), fecha2.atTime(23, 59, 59));
 	}
+
 }
