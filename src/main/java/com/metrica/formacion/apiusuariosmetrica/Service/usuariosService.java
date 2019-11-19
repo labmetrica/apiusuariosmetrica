@@ -46,7 +46,7 @@ public interface usuariosService {
 	List<usuarios> buscarPorCreatedAT(LocalDate fecha1, LocalDate fecha2);
 
 	List<usuarios> buscarPorCreatedATBefore(LocalDate fecha);
-
+  
 	/**/
 
 	List<usuarios> buscarPorUlimaModificacion(LocalDate fecha);
