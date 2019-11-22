@@ -11,7 +11,6 @@ import com.metrica.formacion.apiusuariosmetrica.error.BuscarIdNotFoundException;
 
 import lombok.extern.log4j.Log4j2;
 
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @Log4j2
 @RestController
 @RequestMapping("/clientes")
