@@ -18,7 +18,9 @@ public interface usuariosRepository extends JpaRepository<usuarios, Integer> {
 
 	// Busqueda por nombre y apellido
 
-	List<usuarios> findByNombreContainingIgnoreCase(String nombre);
+    usuarios findByUsername(String username);
+
+    List<usuarios> findByNombreContainingIgnoreCase(String nombre);
 
 	List<usuarios> findByApellidoContainingIgnoreCase(String apellido);
 
