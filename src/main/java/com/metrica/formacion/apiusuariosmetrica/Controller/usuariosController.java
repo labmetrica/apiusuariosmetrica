@@ -9,6 +9,7 @@ import lombok.extern.log4j.Log4j2;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 import com.metrica.formacion.apiusuariosmetrica.Service.usuariosService;
 import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
@@ -32,6 +33,7 @@ public class usuariosController {
 
     @GetMapping("/lista-clientes")
     public List<usuarios> listaUsuarios() {
+
         log.info("Mostrando lista de usuarios");
         return usuariosService.listarUsuarios();
     }
