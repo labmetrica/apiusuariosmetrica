@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j2;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Log4j2
 @Entity
@@ -21,10 +22,16 @@ public class usuarios {
     @Column(name = "Apellido")
     private String apellido;
 
+    @Column(name = "username",unique = true)
+    private String username;
+
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "grupo")
     private int grupo;
 
-    @Column(name = "email")
+    @Column(name = "email",unique = true)
     private String email;
 
     @Column(name = "createdAT")
@@ -40,13 +47,17 @@ public class usuarios {
     @Column(name = "tipo")
     private tipos tipo = tipos.Empleado;
 
-    public enum tipos {Empleado, LAB};
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "ID"),inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<roles> roles;
+
+    public enum tipos {Empleado, LAB}
+
+    ;
 
     //Constructor
 
-    public usuarios(){
-        log.info("nuevo usuario, con id: " + id);
-        createdAT = LocalDateTime.now();
+    public usuarios() {
     }
 
     //Getters and Setters
@@ -74,6 +85,22 @@ public class usuarios {
         this.apellido = apellido;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public int getGrupo() {
         return grupo;
     }
@@ -94,8 +121,9 @@ public class usuarios {
         return createdAT;
     }
 
-    public void setCreatedAT(LocalDateTime createdAT) {
-        this.createdAT = createdAT;
+    @PrePersist
+    public void setCreatedAT() {
+        this.createdAT = LocalDateTime.now();
     }
 
     public boolean isActivo() {
@@ -110,8 +138,9 @@ public class usuarios {
         return ultimaModificacion;
     }
 
-    public void setUltimaModificacion(LocalDateTime ultimaModificacion) {
-        this.ultimaModificacion = ultimaModificacion;
+    @PreUpdate
+    public void setUltimaModificacion() {
+        this.ultimaModificacion = LocalDateTime.now();
     }
 
     public void setUltima_modificacion() {
@@ -125,5 +154,13 @@ public class usuarios {
 
     public void setTipo(tipos tipo) {
         this.tipo = tipo;
+    }
+
+    public List<roles> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<roles> roles) {
+        this.roles = roles;
     }
 }

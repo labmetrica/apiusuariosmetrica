@@ -13,7 +13,7 @@ public class LocalDateConvert implements AttributeConverter<LocalDate, Date> {
 
     @Override
     public Date convertToDatabaseColumn(LocalDate localDateTime) {
-        return Date.valueOf(localDateTime );
+        return Date.valueOf(localDateTime);
     }
 
     @Override

@@ -18,7 +18,9 @@ public interface usuariosRepository extends JpaRepository<usuarios, Integer> {
 
 	// Busqueda por nombre y apellido
 
-	List<usuarios> findByNombreContainingIgnoreCase(String nombre);
+    usuarios findByUsername(String username);
+
+    List<usuarios> findByNombreContainingIgnoreCase(String nombre);
 
 	List<usuarios> findByApellidoContainingIgnoreCase(String apellido);
 
@@ -28,14 +30,12 @@ public interface usuariosRepository extends JpaRepository<usuarios, Integer> {
 
 	usuarios findByEmailContainingIgnoreCase(String email);
 
-	/* Buscar por fechas */
-
 	// CreatedAT
-
-	List<usuarios> findByCreatedATBetween(LocalDateTime fecha1, LocalDateTime fecha2);
 
 	@Query(value = "SELECT * FROM usuarios WHERE DATE(usuarios.createdAT) = ?1", nativeQuery = true)
 	List<usuarios> findByCreatedAT(String date);
+
+	List<usuarios> findByCreatedATBetween(LocalDateTime fecha1, LocalDateTime fecha2);
 
 	List<usuarios> findByCreatedATBefore(LocalDateTime localDateTime);
 
