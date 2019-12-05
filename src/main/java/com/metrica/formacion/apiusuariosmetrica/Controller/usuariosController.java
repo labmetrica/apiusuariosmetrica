@@ -1,16 +1,21 @@
 package com.metrica.formacion.apiusuariosmetrica.Controller;
 
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
 import com.metrica.formacion.apiusuariosmetrica.Service.usuariosService;
 import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
-import com.metrica.formacion.apiusuariosmetrica.error.BuscarIdNotFoundException;
+import com.netflix.appinfo.InstanceInfo;
+import com.netflix.discovery.EurekaClient;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpHeaders;
+import org.springframework.web.bind.annotation.*;
+import com.metrica.formacion.apiusuariosmetrica.Service.usuariosService;
+import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
 
 import lombok.extern.log4j.Log4j2;
 
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @Log4j2
 @RestController
 @RequestMapping("/clientes")
@@ -19,65 +24,71 @@ public class usuariosController {
 	@Autowired
 	private usuariosService usuariosService;
 
-	@GetMapping("/lista-clientes")
-	public List<usuarios> listaUsuarios() {
+    @Qualifier("eurekaClient")
+    @Autowired
+    private EurekaClient eurekaClient;
 
-		log.info("Mostrando lista de usuarios");
-		return usuariosService.listarUsuarios();
-	}
+    //
 
-	/* GET */
+    @GetMapping("/lista-clientes")
+    public List<usuarios> listaUsuarios() {
 
-	@GetMapping("/buscarPorID/{id}")
-	public usuarios buscarPorId(@PathVariable("id") Integer id) throws BuscarIdNotFoundException {
-		return usuariosService.buscarPorId(id);
-	}
+        log.info("Mostrando lista de usuarios");
+        return usuariosService.listarUsuarios();
+    }
 
-	@GetMapping("/bucarPorNombre/{nombre}")
-	public List<usuarios> buscarPorNombre(@PathVariable("nombre") String nombre) {
-		return usuariosService.buscarPorNombre(nombre);
-	}
+    /* GET */
 
-	@GetMapping("/bucarPorApellido/{apellido}")
-	public List<usuarios> buscarPorApelllido(@PathVariable("apellido") String apellido) {
+    @GetMapping("/buscarPorID/{id}")
+    public usuarios buscarPorId(@PathVariable("id") Integer id) {
+      return usuariosService.buscarPorId(id);
+  }
 
-		return usuariosService.buscarPorApellido(apellido);
-	}
+    @GetMapping("/buscarPorNombre/{nombre}")
+    public List<usuarios> buscarPorNombre(@PathVariable("nombre") String nombre) {
+        return usuariosService.buscarPorNombre(nombre);
+    }
 
-	/* POST */
+    @GetMapping("/buscarPorApellido/{apellido}")
+    public List<usuarios> buscarPorApelllido(@PathVariable("apellido") String apellido) {
+        return usuariosService.buscarPorApellido(apellido);
+    }
 
-	@PostMapping("/guardarUsuario")
-	public usuarios guardarusuario(@RequestBody usuarios usuarios) {
+    @GetMapping("/buscarPorGrupo/{key}")
+    public List<usuarios> buscarPorGrupo(@PathVariable("key") Integer id){
+        return usuariosService.buscarPorGrupo(id);
+    }
 
-		if (usuariosService.isExiste(usuarios)) {
+    /* POST */
 
-			// error si existe
+    @PostMapping("/guardarUsuario")
+    public usuarios guardarusuario(@RequestBody usuarios usuarios) {
+        return usuariosService.guardarUsuario(usuarios);
+    }
 
-			return null;
-		}
+    /* PUT */
 
-		return usuariosService.guardarUsuario(usuarios);
-	}
+    @PutMapping("/actualizarUsuario")
+    public usuarios actualizarUsuario(@RequestBody usuarios usuarios) {
+    return usuariosService.guardarUsuario(usuarios);
+    }
 
-	/* PUT */
+    /* DELETE */
 
-	@PutMapping("/actualizarUsuario")
-	public usuarios actualizarUsuario(@RequestBody usuarios usuarios) {
+    @DeleteMapping("/borrarUsuario/{id}")
+    public void borrarUsuario(@PathVariable("id") Integer id) {
+    usuariosService.borrarPorId(id);
+    }
 
-		return usuariosService.guardarUsuario(usuarios);
-	}
+    @DeleteMapping("/borrarTODO")
+    public void borrarTodo() {
+        usuariosService.borrarTodo();
+    }
 
-	/* DELETE */
+    //Test eureka client
 
-	@DeleteMapping("/borrarUsuario/{id}")
-	public void borrarUsuario(@PathVariable("id") Integer id) {
-
-		usuariosService.borrarPorId(id);
-	}
-
-	@DeleteMapping("/borrarTODO")
-	public void borrarTodo() {
-
-		usuariosService.borrarTodo();
-	}
+    @GetMapping("/service-instances/{applicationName}")
+    public List<InstanceInfo> serviceInstancesByApplicationName(@PathVariable String applicationName) {
+      return this.eurekaClient.getApplication(applicationName).getInstancesAsIsFromEureka();
+    }
 }

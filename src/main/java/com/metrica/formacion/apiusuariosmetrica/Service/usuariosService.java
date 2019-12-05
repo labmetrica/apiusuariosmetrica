@@ -1,10 +1,9 @@
 package com.metrica.formacion.apiusuariosmetrica.Service;
 
+import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
 import java.time.LocalDate;
 import java.util.List;
-
 import com.metrica.formacion.apiusuariosmetrica.entity.usuarios;
-import com.metrica.formacion.apiusuariosmetrica.error.BuscarIdNotFoundException;
 
 public interface usuariosService {
 
@@ -14,9 +13,9 @@ public interface usuariosService {
 
 	boolean isExiste(int id);
 
-	usuarios buscarPorId(Integer id) throws BuscarIdNotFoundException;
+	usuarios buscarPorId(Integer id);
 
-	usuarios buscarPorIdEntity(Integer id) throws BuscarIdNotFoundException;
+	usuarios buscarPorIdEntity(Integer id);
 
 	usuarios guardarUsuario(usuarios usuarios);
 
@@ -25,10 +24,14 @@ public interface usuariosService {
 	void borrarPorId(Integer id);
 
 	void borrarUsuario(usuarios usuario);
+  
+  void borrarTodo();
+    
+  //select - grupo
 
-	void borrarTodo();
+  List<usuarios> buscarPorGrupo(int id);
 
-	// select - Nombre
+	//select - Nombre
 
 	List<usuarios> buscarPorNombre(String nombre);
 
